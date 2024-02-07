@@ -4,19 +4,31 @@ https://leetcode.com/problems/palindrome-number/
 
 SOLUTION:-
 
+#include <iostream>
+#include <string>
+#include <cctype>
+
+
 class Solution {
 public:
-    bool isPalindrome(int x) {
-        if (x < 0 || (x % 10 == 0 && x != 0)) {
-            return false;
+    bool isPalindrome(std::string s) {
+        std::string cleanString;
+        for (char c : s) {
+            if (std::isalnum(c)) {
+                cleanString += std::tolower(c);
+            }
         }
-
-        int reversed = 0;
-        while (x > reversed) {
-            int digit = x % 10;
-            reversed = reversed * 10 + digit;
-            x /= 10;
+        
+        // Check if cleanString is a palindrome
+        int left = 0, right = cleanString.length() - 1;
+        while (left < right) {
+            if (cleanString[left] != cleanString[right]) {
+                return false;
+            }
+            left++;
+            right--;
         }
-        return x == reversed || x == reversed / 10;
+        return true;
     }
 };
+
