@@ -1,0 +1,17 @@
+QUESTION LINK:-
+https://leetcode.com/problems/missing-number/
+
+SOLUTION:-
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n = nums.size();
+        int sum_expected = n * (n + 1) / 2;
+        int sum_actual = 0;
+        for (int num : nums) {
+            sum_actual += num;
+        }
+        return sum_expected - sum_actual;
+    }
+};
