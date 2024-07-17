@@ -1,0 +1,27 @@
+QUESTION LINK:-
+https://leetcode.com/problems/rearrange-array-elements-by-sign/
+
+
+SOLUTION:-
+
+#include <vector>
+class Solution {
+public:
+    std::vector<int> rearrangeArray(std::vector<int>& nums) {
+        std::vector<int> result(nums.size());
+        int posIndex = 0; // Pointer for positive numbers
+        int negIndex = 1; // Pointer for negative numbers
+        
+        for (int num : nums) {
+            if (num > 0) {
+                result[posIndex] = num;
+                posIndex += 2; // Move to the next position for positive
+            } else {
+                result[negIndex] = num;
+                negIndex += 2; // Move to the next position for negative
+            }
+        }
+        
+        return result;
+    }
+};
